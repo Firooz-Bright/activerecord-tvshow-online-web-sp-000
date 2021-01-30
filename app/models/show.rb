@@ -7,7 +7,8 @@ class Show < ActiveRecord::Base
   end 
   
   def self.most_popular_show
-       Show.find(:all, :limit => 1, :order => 'rating.des')
+    Show.select('rating, count(1)').having('Min(rating)')
+
   end
 
   def self.lowest_rating
