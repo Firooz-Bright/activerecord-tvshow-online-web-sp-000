@@ -7,8 +7,7 @@ class Show < ActiveRecord::Base
   end 
   
   def self.most_popular_show
-    Show.select('rating, count(1)').having('Max(rating)').first
-
+    Show.order('rating desc').first 
   end
 
   def self.lowest_rating
